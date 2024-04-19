@@ -1,0 +1,108 @@
+<!DOCTYPE html>  
+<html lang="zh">  
+<head>  
+<meta charset="UTF-8">  
+<meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<title>春江花月夜</title>  
+<style>  
+  body {  
+    font-family: "Microsoft YaHei", sans-serif;  
+    background-color: #121f33; /* 深蓝色背景，符合夜晚氛围 */  
+    color: #fff; /* 白色文字，与背景形成对比 */  
+    margin: 0;  
+    padding: 0;  
+    overflow-x: hidden;  
+  }  
+  
+  .moon {  
+    width: 150px;  
+    height: 150px;  
+    border-radius: 50%;  
+    background-color: #fff;  
+    position: absolute;  
+    top: 50%;  
+    left: 50%;  
+    transform: translate(-50%, -50%); /* 居中显示 */  
+    animation: moon-rise 10s infinite; /* 月亮升起的动画 */  
+  }  
+  
+  @keyframes moon-rise {  
+    0% {  
+      transform: translate(-50%, calc(-50% - 100px));  
+      opacity: 0;  
+    }  
+    50% {  
+      opacity: 1;  
+    }  
+    100% {  
+      transform: translate(-50%, calc(-50% + 100px));  
+      opacity: 0;  
+    }  
+  }  
+  
+  .poem {  
+    text-align: center;  
+    padding: 50px; /* 增加内边距，使诗句与边缘有一定距离 */  
+  }  
+  
+  /* 可选：添加一些装饰元素，如星星 */  
+  .stars {  
+    position: absolute;  
+    top: 50%;  
+    width: 100%;  
+    height: 50%;  
+    pointer-events: none; /* 禁止星星上的鼠标事件 */  
+    z-index: -1; /* 星星在背景之下 */  
+  }  
+  
+  .star {  
+    position: absolute;  
+    width: 2px;  
+    height: 2px;  
+    background: #fff;  
+    border-radius: 50%;  
+    animation: twinkle 2s infinite; /* 星星闪烁的动画 */  
+  }  
+  
+  @keyframes twinkle {  
+    0%, 100% {  
+      opacity: 1;  
+    }  
+    50% {  
+      opacity: 0.5;  
+    }  
+  }  
+</style>  
+</head>  
+<body>  
+  
+<div class="stars">  
+  <!-- 使用JavaScript动态生成星星，这里仅为示例，可省略 -->  
+</div>  
+  
+<div class="moon"></div>  
+  
+<div class="poem">  
+  <p>春江潮水连海平，海上明月共潮生。</p>  
+  <p>滟滟随波千万里，何处春江无月明！</p>  
+  <p>江流宛转绕芳甸，月照花林皆似霰；</p>  
+  <p>空里流霜不觉飞，汀上白沙看不见。</p>  
+  <!-- 这里可以继续添加诗句 -->  
+</div>  
+  
+<script>  
+  // 可选：使用JavaScript生成一些星星装饰页面  
+  const starsCount = 200; // 星星的数量  
+  const starsContainer = document.querySelector('.stars');  
+  
+  for (let i = 0; i < starsCount; i++) {  
+    const star = document.createElement('div');  
+    star.classList.add('star');  
+    star.style.left = `${Math.random() * 100}%`;  
+    star.style.top = `${Math.random() * 50}%`;  
+    starsContainer.appendChild(star);  
+  }  
+</script>  
+  
+</body>  
+</html>
