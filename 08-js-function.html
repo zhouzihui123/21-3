@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>武侠人物生成器</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: 'Zhi Mang Xing', cursive, 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(to right, #00b4d8, #0083b0); /* 蓝色渐变背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+            overflow: hidden;
+        }
+        .container {
+            width: 80%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        h1 {
+            font-size: 2.5em;
+            color: #fff;
+            margin-bottom: 0.5em;
+        }
+        #generate {
+            padding: 10px 20px;
+            font-size: 1em;
+            color: #fff;
+            background: #005f73;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            margin-top: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        #generate:hover {
+            background: #004c5e;
+        }
+        #character-intro {
+            margin-top: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        #character-intro p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            color: #333;
+            margin: 10px 0;
+        }
+        .martial-artist {
+            position: absolute;
+            bottom: 10px;
+            left: 10px; /* 根据需要调整位置 */
+            width: 100px; /* 根据实际图片调整 */
+            height: 100px; /* 根据实际图片调整 */
+            background: url('martial-artist.png') no-repeat center;
+            background-size: cover;
+            animation: swordSwinging 5s ease-in-out infinite;
+        }
+        @keyframes swordSwinging {
+            0%, 100% {
+                transform: rotate(-10deg);
+            }
+            50% {
+                transform: rotate(10deg);
+            }
+        }
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+                padding: 15px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            #character-intro p {
+                font-size: 1em;
+            }
+            .martial-artist {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="martial-artist"></div> <!-- 武侠形象动画 -->
+        <h1>武侠人物生成器</h1>
+        <button id="generate">生成人物</button>
+        <div id="character-intro"></div>
+    </div>
+
+    <script>
+      // 人物属性的选项集合
+      const backgrounds = ['少林寺', '武当山', '峨眉派', '丐帮', '华山派'];
+      const talents = ['内功深厚', '剑法高超', '轻功卓越', '精通医术', '擅长暗器'];
+      const personalities = ['豪爽', '机智', '冷酷', '温柔', '憨厚'];
+      const beauties = ['英俊潇洒', '风姿绰约', '清丽脱俗', '英气逼人', '美艳绝伦'];
+
+      // 随机选择属性的函数
+      function getRandomProperty(properties) {
+          return properties[Math.floor(Math.random() * properties.length)];
+      }
+
+      // 生成人物介绍的函数
+      function generateCharacter() {
+          const background = getRandomProperty(backgrounds);
+          const talent = getRandomProperty(talents);
+          const personality = getRandomProperty(personalities);
+          const beauty = getRandomProperty(beauties);
+
+          const characterIntro = `
+              出身：${background}<br>
+              禀赋：${talent}<br>
+              性格：${personality}<br>
+              外貌：${beauty}
+          `;
+
+          return characterIntro;
+      }
+
+      // 点击按钮事件处理
+      document.getElementById('generate').addEventListener('click', () => {
+          const characterIntro = generateCharacter();
+          document.getElementById('character-intro').innerHTML = `
+              <h2>人物介绍</h2>
+              <p>${characterIntro}</p>
+          `;
+          document.getElementById('character-intro').style.opacity = '1';
+          document.getElementById('character-intro').style.transform = 'translateY(0)';
+      });
+  </script>
+</body>
+</html>
