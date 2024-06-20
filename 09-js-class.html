@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS类、属性</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+<script>
+  // 定义Fruit类
+  class Fruit {
+    // 构造器，初始化水果的基本属性
+    constructor(name, color, taste) {
+      // 使用this关键字将构造器的参数赋值给实例属性
+      this.name = name;  // 水果的名称
+      this.color = color; // 水果的颜色
+      this.taste = taste; // 水果的味道
+    }
+  }
+
+  // 创建Fruit类的实例
+  let apple = new Fruit('苹果', '红色', '甜');
+  let banana = new Fruit('香蕉', '黄色', '甜');
+  let orange = new Fruit('橙子', '橙色', '酸甜');
+
+  // 打印实例属性
+  console.log(apple); // 输出: Fruit { name: '苹果', color: '红色', taste: '甜' }
+  console.log(banana); // 输出: Fruit { name: '香蕉', color: '黄色', taste: '甜' }
+  console.log(orange); // 输出: Fruit { name: '橙子', color: '橙色', taste: '酸甜' }
+</script>
+</body>
+
+</html>
